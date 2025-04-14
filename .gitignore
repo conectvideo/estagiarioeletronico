@@ -1,0 +1,32 @@
+# Delphi binários e arquivos gerados
+*.exe
+*.dll
+*.dcu
+*.~*
+*.bpl
+*.dsk
+*.identcache
+*.local
+*.rsm
+*.map
+*.tds
+*.bak
+*.obj
+*.hpp
+*.lib
+*.log
+
+# Pastas comuns a ignorar
+__history/
+__recovery/
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+
+# Git LFS pode ser usado para arquivos grandes, mas esses aqui serão ignorados
+*.zip
+*.rar
+*.7z
+*.iso
+*.msi
