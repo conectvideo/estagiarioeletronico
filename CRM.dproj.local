@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2025/04/11 12:26:16.000.735,C:\Users\Public\Documents\CRM\Unit1.dfm=C:\Users\Public\Documents\CRM\UnitPrincipal.dfm</Transaction>
+    <Transaction>2025/04/11 12:26:16.000.734,C:\Users\Public\Documents\CRM\Unit1.pas=C:\Users\Public\Documents\CRM\UnitPrincipal.pas</Transaction>
+    <Transaction>2025/04/11 13:17:22.000.515,=C:\Users\Public\Documents\CRM\Unit1.pas</Transaction>
+    <Transaction>2025/04/11 13:18:25.000.395,C:\Users\Public\Documents\CRM\Unit1.dfm=C:\Users\Public\Documents\CRM\CRM_DataModule.dfm</Transaction>
+    <Transaction>2025/04/11 13:18:25.000.395,C:\Users\Public\Documents\CRM\Unit1.pas=C:\Users\Public\Documents\CRM\CRM_DataModule.pas</Transaction>
+    <Transaction>2025/04/13 09:31:12.971,=C:\Users\Public\Documents\CRM\Unit1.pas</Transaction>
+    <Transaction>2025/04/13 09:31:57.372,C:\Users\Public\Documents\CRM\UnitCondominio.pas=C:\Users\Public\Documents\CRM\Unit1.pas</Transaction>
+    <Transaction>2025/04/13 09:31:57.372,C:\Users\Public\Documents\CRM\UnitCondominio.dfm=C:\Users\Public\Documents\CRM\Unit1.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

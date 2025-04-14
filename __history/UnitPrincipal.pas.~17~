@@ -1,0 +1,166 @@
+unit UnitPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
+  Vcl.Menus, D2Bridge.Forms, Vcl.ExtCtrls, Vcl.Imaging.jpeg; //Declare D2Bridge.Forms always in the last unit
+
+type
+  TFrmPrincipal = class(TD2BridgeForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    MainMenu1: TMainMenu;
+    Module11: TMenuItem;
+    AppModule21: TMenuItem;
+    CoreModules1: TMenuItem;
+    CoreModule11: TMenuItem;
+    CoreModule21: TMenuItem;
+    Image1: TImage;
+    Desconectar1: TMenuItem;
+    Condomnios1: TMenuItem;
+    Inquilinos1: TMenuItem;
+    elefones1: TMenuItem;
+    Condomnio1: TMenuItem;
+    Funcionrios1: TMenuItem;
+    Blocos1: TMenuItem;
+    reasComuns1: TMenuItem;
+    rea1: TMenuItem;
+    Reservas1: TMenuItem;
+    Bancos1: TMenuItem;
+    Bancos2: TMenuItem;
+    Contas1: TMenuItem;
+    ProprietriosporCondominio1: TMenuItem;
+    Proprietrios1: TMenuItem;
+    funcionrios2: TMenuItem;
+    Pessoas1: TMenuItem;
+    Funcionrios3: TMenuItem;
+    reasComuns2: TMenuItem;
+    Blocos2: TMenuItem;
+    Inquilinos2: TMenuItem;
+    Inquilinos3: TMenuItem;
+    Bancos3: TMenuItem;
+    Bancos4: TMenuItem;
+    reas1: TMenuItem;
+    reas2: TMenuItem;
+    Contas3: TMenuItem;
+    Agncias1: TMenuItem;
+    Contas2: TMenuItem;
+    procedure Module11Click(Sender: TObject);
+    procedure Condomnio1Click(Sender: TObject);
+  private
+
+  public
+
+  protected
+   procedure ExportD2Bridge; override;
+   procedure InitControlsD2Bridge(const PrismControl: TPrismControl); override;
+   procedure RenderD2Bridge(const PrismControl: TPrismControl; var HTMLControl: string); override;
+  end;
+
+Function FrmPrincipal: TFrmPrincipal;
+
+implementation
+
+Uses
+   CRMWebApp;
+
+Function FrmPrincipal: TFrmPrincipal;
+begin
+ Result:= TFrmPrincipal(TFrmPrincipal.GetInstance);
+end;
+
+{$R *.dfm}
+
+{ TForm1 }
+
+procedure TFrmPrincipal.Condomnio1Click(Sender: TObject);
+begin
+  if FrmCondominio = nil then
+     FrmCondominio.CreateInstance;
+end;
+
+procedure TFrmPrincipal.ExportD2Bridge;
+begin
+ inherited;
+
+ Title:= 'Gerenciador de Condomínios';
+ //SubTitle:= 'My WebApp';
+
+ //TemplateClassForm:= TD2BridgeFormTemplate;
+ D2Bridge.FrameworkExportType.TemplateMasterHTMLFile:= '';
+ D2Bridge.FrameworkExportType.TemplatePageHTMLFile := '';
+
+ //Export yours Controls
+ with D2Bridge.Items.add do
+ begin
+  SideMenu(MainMenu1);
+//  VCLObj(Label1);
+//  VCLObj(Label2);
+//  VCLObj(Label3);
+    VCLObj(image1);
+ end;
+end;
+
+procedure TFrmPrincipal.InitControlsD2Bridge(const PrismControl: TPrismControl);
+begin
+ inherited;
+
+ //Menu example
+ {
+  if PrismControl.VCLComponent = MainMenu1 then
+   PrismControl.AsMainMenu.Title:= 'AppTeste'; //or in SideMenu use asSideMenu
+
+  if PrismControl.VCLComponent = MainMenu1 then
+   PrismControl.AsMainMenu.Image.URL:= 'https://d2bridge.com.br/images/LogoD2BridgeTransp.png'; //or in SideMenu use asSideMenu
+
+  //GroupIndex example
+  if PrismControl.VCLComponent = MainMenu1 then
+   with PrismControl.AsMainMenu do  //or in SideMenu use asSideMenu
+   begin
+    MenuGroups[0].Caption:= 'Principal';
+    MenuGroups[1].Caption:= 'Services';
+    MenuGroups[2].Caption:= 'Items';
+   end;
+
+  //Chance Icon and Propertys MODE 1 *Using MenuItem component
+  PrismControl.AsMainMenu.MenuItemFromVCLComponent(Abrout1).Icon:= 'fa-solid fa-rocket';
+
+  //Chance Icon and Propertys MODE 2 *Using MenuItem name
+  PrismControl.AsMainMenu.MenuItemFromName('Abrout1').Icon:= 'fa-solid fa-rocket';
+ }
+
+ //Change Init Property of Prism Controls
+ {
+  if PrismControl.VCLComponent = Edit1 then
+   PrismControl.AsEdit.DataType:= TPrismFieldType.PrismFieldTypeInteger;
+
+  if PrismControl.IsDBGrid then
+  begin
+   PrismControl.AsDBGrid.RecordsPerPage:= 10;
+   PrismControl.AsDBGrid.MaxRecords:= 2000;
+  end;
+ }
+end;
+
+procedure TFrmPrincipal.Module11Click(Sender: TObject);
+begin
+ FrmPrincipal.Show;
+end;
+
+procedure TFrmPrincipal.RenderD2Bridge(const PrismControl: TPrismControl; var HTMLControl: string);
+begin
+ inherited;
+
+ //Intercept HTML
+ {
+  if PrismControl.VCLComponent = Edit1 then
+  begin
+   HTMLControl:= '</>';
+  end;
+ }
+end;
+
+end.
