@@ -10,17 +10,21 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
   FireDAC.Phys.FB, FireDAC.Phys.FBDef, FireDAC.Phys.IBBase, FireDAC.Stan.Param,
-  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet;
+  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
+  Vcl.Dialogs;
 
 type
   TDm = class(TDataModule)
     FDConnection2: TFDConnection;
     FDPhysFBDriverLink1: TFDPhysFBDriverLink;
-    FDQuery1: TFDQuery;
+    qryCondominios: TFDQuery;
     DataSource1: TDataSource;
+
   private
+
     { Private declarations }
   public
+    procedure ListarCondominios(Busca: string);
     class procedure CreateInstance;
   end;
 
@@ -43,6 +47,23 @@ end;
 function Dm:TDm;
 begin
  result:= TDm(D2BridgeInstance.GetInstance(TDm));
+end;
+
+Procedure TDm.ListarCondominios(Busca: string);
+begin
+  qryCondominios.Active := False;
+  qryCondominios.SQL.clear;
+  qryCondominios.SQL.Add('select * from condominios');
+
+  if busca <> '' then
+  begin
+    qryCondominios.SQL.Add('where nome like :nome');
+    qryCondominios.ParamByName('nome').Value := '%' + busca + '%';
+  end;
+
+  qryCondominios.SQL.Add('order by Id Asc');
+
+  qryCondominios.Active:= true;
 end;
 
 end.

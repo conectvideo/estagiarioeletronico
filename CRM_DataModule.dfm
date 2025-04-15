@@ -4,13 +4,14 @@ object Dm: TDm
   PixelsPerInch = 120
   object FDConnection2: TFDConnection
     Params.Strings = (
-      'Database= /opt/firebird/databases/condominio.fdb'
+      'Database=C:\FONTES\admcondominios\banco\CONDOMINIOS.FDB'
       'User_Name=SYSDBA'
       'Password=Masterkey'
       'Protocol=TCPIP'
       'Server=192.168.15.99'
       'Port=3050'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 32
     Top = 32
@@ -20,7 +21,7 @@ object Dm: TDm
     Left = 184
     Top = 32
   end
-  object FDQuery1: TFDQuery
+  object qryCondominios: TFDQuery
     Connection = FDConnection2
     SQL.Strings = (
       'select * from condominios')
@@ -28,7 +29,7 @@ object Dm: TDm
     Top = 120
   end
   object DataSource1: TDataSource
-    DataSet = FDQuery1
+    DataSet = qryCondominios
     Left = 168
     Top = 128
   end

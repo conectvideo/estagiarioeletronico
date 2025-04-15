@@ -4,10 +4,37 @@
     <Transaction>2025/04/11 12:26:16.000.735,C:\Users\Public\Documents\CRM\Unit1.dfm=C:\Users\Public\Documents\CRM\UnitPrincipal.dfm</Transaction>
     <Transaction>2025/04/11 12:26:16.000.734,C:\Users\Public\Documents\CRM\Unit1.pas=C:\Users\Public\Documents\CRM\UnitPrincipal.pas</Transaction>
     <Transaction>2025/04/11 13:17:22.000.515,=C:\Users\Public\Documents\CRM\Unit1.pas</Transaction>
-    <Transaction>2025/04/11 13:18:25.000.395,C:\Users\Public\Documents\CRM\Unit1.dfm=C:\Users\Public\Documents\CRM\CRM_DataModule.dfm</Transaction>
     <Transaction>2025/04/11 13:18:25.000.395,C:\Users\Public\Documents\CRM\Unit1.pas=C:\Users\Public\Documents\CRM\CRM_DataModule.pas</Transaction>
-    <Transaction>2025/04/13 09:31:12.971,=C:\Users\Public\Documents\CRM\Unit1.pas</Transaction>
-    <Transaction>2025/04/13 09:31:57.372,C:\Users\Public\Documents\CRM\UnitCondominio.pas=C:\Users\Public\Documents\CRM\Unit1.pas</Transaction>
-    <Transaction>2025/04/13 09:31:57.372,C:\Users\Public\Documents\CRM\UnitCondominio.dfm=C:\Users\Public\Documents\CRM\Unit1.dfm</Transaction>
-  </Transactions>
+    <Transaction>2025/04/11 13:18:25.000.395,C:\Users\Public\Documents\CRM\Unit1.dfm=C:\Users\Public\Documents\CRM\CRM_DataModule.dfm</Transaction>
+    <Transaction>2025/04/13 09:31:12.000.971,=C:\Users\Public\Documents\CRM\Unit1.pas</Transaction>
+    <Transaction>2025/04/13 09:31:57.000.372,C:\Users\Public\Documents\CRM\UnitCondominio.pas=C:\Users\Public\Documents\CRM\Unit1.pas</Transaction>
+    <Transaction>2025/04/13 09:31:57.000.372,C:\Users\Public\Documents\CRM\UnitCondominio.dfm=C:\Users\Public\Documents\CRM\Unit1.dfm</Transaction>
+    <Transaction>2025/04/15 08:43:08.891,=C:\Users\Public\Documents\CRM\Unit1.pas</Transaction>
+    <Transaction>2025/04/15 08:43:55.328,C:\Users\Public\Documents\CRM\UnitCondominioCad.pas=C:\Users\Public\Documents\CRM\Unit1.pas</Transaction>
+    <Transaction>2025/04/15 08:43:55.328,C:\Users\Public\Documents\CRM\UnitCondominioCad.dfm=C:\Users\Public\Documents\CRM\Unit1.dfm</Transaction>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="C:"/>
+    <File Path="C:\Componentes"/>
+    <File Path="C:\Componentes\d2bridge"/>
+    <File Path="C:\Componentes\d2bridge\D2Bridge Framework"/>
+    <File Path="C:\Componentes\d2bridge\D2Bridge Framework\Prism"/>
+    <File Path="C:\Componentes\d2bridge\D2Bridge Framework\Prism\Prism.SessionBase.pas"/>
+    <File Path="C:\Componentes\d2bridge\D2Bridge Framework\Prism\Prism.SessionBase.dfm"/>
+    <File Path="C:\Componentes\d2bridge\D2Bridge Framework\D2Bridge.ServerControllerBase.pas"/>
+    <File Path="C:\Componentes\d2bridge\D2Bridge Framework\D2Bridge.ServerControllerBase.dfm"/>
+    <File Path="CRMWebApp.pas"/>
+    <File Path="CRMWebApp.dfm"/>
+    <File Path="CRM_DataModule.pas"/>
+    <File Path="CRM_DataModule.dfm"/>
+    <File Path="CRM_Session.pas"/>
+    <File Path="CRM_Session.dfm"/>
+    <File Path="D2BridgeFormTemplate.pas"/>
+    <File Path="UnitCondominio.pas"/>
+    <File Path="UnitCondominio.dfm"/>
+    <File Path="UnitPrincipal.pas"/>
+    <File Path="UnitPrincipal.dfm"/>
+    <File Path="Unit_D2Bridge_Server_Console.pas"/>
+    <File Path="UnitCondominioCad.pas"/>
+    <File Path="UnitCondominioCad.dfm"/>
+  </ProjectSortOrder>
 </BorlandProject>

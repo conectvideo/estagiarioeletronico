@@ -17,7 +17,8 @@ uses
   Unit_D2Bridge_Server_Console in 'Unit_D2Bridge_Server_Console.pas',
   UnitPrincipal in 'UnitPrincipal.pas' {FrmPrincipal},
   CRM_DataModule in 'CRM_DataModule.pas' {Dm: TDataModule},
-  UnitCondominio in 'UnitCondominio.pas' {FrmCondominio};
+  UnitCondominio in 'UnitCondominio.pas' {FrmCondominio},
+  UnitCondominioCad in 'UnitCondominioCad.pas' {FrmCondominioCad};
 
 {$R *.res}
 

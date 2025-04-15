@@ -208,6 +208,10 @@
             <Form>FrmCondominio</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UnitCondominioCad.pas">
+            <Form>FrmCondominioCad</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -12,39 +12,6 @@ object FrmPrincipal: TFrmPrincipal
   Font.Style = []
   Menu = MainMenu1
   TextHeight = 13
-  object Label1: TLabel
-    Left = 8
-    Top = 8
-    Width = 122
-    Height = 25
-    Caption = 'Hello World'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -21
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object Label2: TLabel
-    Left = 8
-    Top = 39
-    Width = 294
-    Height = 18
-    Caption = 'This app is created with D2Bridge Framework'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -15
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label3: TLabel
-    Left = 8
-    Top = 65
-    Width = 115
-    Height = 13
-    Caption = 'by Talis Jonatas  Gomes'
-  end
   object Image1: TImage
     Left = 0
     Top = 0

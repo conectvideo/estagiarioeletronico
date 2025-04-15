@@ -20,7 +20,7 @@ implementation
 
 Uses
   D2Bridge.Instance,
-  CRMWebApp;
+  CRMWebApp, CRM_DataModule;
 
 {$R *.dfm}
 
@@ -28,7 +28,8 @@ constructor TCRMSession.Create(APrismSession: TPrismSession); //OnNewSession
 begin
  inherited;
 
- //Your code
+ if DM = nil then
+   TDm.CreateInstance;
 
 end;
 

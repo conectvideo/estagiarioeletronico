@@ -9,16 +9,12 @@ uses
 
 type
   TFrmPrincipal = class(TD2BridgeForm)
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
     MainMenu1: TMainMenu;
     Module11: TMenuItem;
     AppModule21: TMenuItem;
     CoreModules1: TMenuItem;
     CoreModule11: TMenuItem;
     CoreModule21: TMenuItem;
-    Image1: TImage;
     Desconectar1: TMenuItem;
     Condomnios1: TMenuItem;
     Inquilinos1: TMenuItem;
@@ -48,6 +44,7 @@ type
     Contas3: TMenuItem;
     Agncias1: TMenuItem;
     Contas2: TMenuItem;
+    Image1: TImage;
     procedure Module11Click(Sender: TObject);
     procedure Condomnio1Click(Sender: TObject);
   private
@@ -89,7 +86,7 @@ begin
  inherited;
 
  Title:= 'Gerenciador de Condomínios';
- //SubTitle:= 'My WebApp';
+ SubTitle:= '';
 
  //TemplateClassForm:= TD2BridgeFormTemplate;
  D2Bridge.FrameworkExportType.TemplateMasterHTMLFile:= '';
@@ -102,7 +99,7 @@ begin
 //  VCLObj(Label1);
 //  VCLObj(Label2);
 //  VCLObj(Label3);
-    //VCLObj(image1);
+    VCLObj(image1);
  end;
 end;
 
