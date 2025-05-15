@@ -1,4 +1,22 @@
 function PrismServerFunctions() {
+    async function sendWhenConnected(eventObject) {
+        if (prismws && prismws.readyState === WebSocket.OPEN) {
+            prismws.send(JSON.stringify(eventObject));
+            return;
+        }
+
+        await new Promise(resolve => {
+            const interval = setInterval(() => {
+                if (prismws && prismws.readyState === WebSocket.OPEN) {
+                    clearInterval(interval);
+                    resolve();
+                }
+            }, 1);
+        });
+
+        prismws.send(JSON.stringify(eventObject));
+    }  
+
     this.sendMessageAndAwaitResponse = function (message) {
         return new Promise((resolve, reject) => {
             var prismwsresponse;
@@ -12,9 +30,9 @@ function PrismServerFunctions() {
             }
 
             if (connectionInfo.pathPrefix !== "/") {
-                prismwsresponse = new WebSocket(connectionInfo.protocol + '://' + connectionInfo.host + ':' + connectionInfo.port + '/websocket' + connectionInfo.pathPrefix + '/connectionresponseparams?token=' + connectionInfo.token + '&prismsession=' + connectionInfo.prismsession + '&channelname=' + connectionInfo.channelname);
+                prismwsresponse = new WebSocket(connectionInfo.protocol + '://' + connectionInfo.host + ':' + connectionInfo.port + '/websocket' + connectionInfo.pathPrefix + '/connectionresponseparams?token=' + connectionInfo.token + '&prismsession=' + connectionInfo.prismsession + '&channelname=' + connectionInfo.channelname + '&viewportinfo=' + encodeURIComponent(D2BridgeGetViewportInfo()));
             } else {
-                prismwsresponse = new WebSocket(connectionInfo.protocol + '://' + connectionInfo.host + ':' + connectionInfo.port + '/websocket' + '/connectionresponseparams?token=' + connectionInfo.token + '&prismsession=' + connectionInfo.prismsession + '&channelname=' + connectionInfo.channelname);
+                prismwsresponse = new WebSocket(connectionInfo.protocol + '://' + connectionInfo.host + ':' + connectionInfo.port + '/websocket' + '/connectionresponseparams?token=' + connectionInfo.token + '&prismsession=' + connectionInfo.prismsession + '&channelname=' + connectionInfo.channelname + '&viewportinfo=' + encodeURIComponent(D2BridgeGetViewportInfo()));
             }
 
             prismwsresponse.onopen = () => {
@@ -68,9 +86,8 @@ function PrismServerFunctions() {
         if (LockClient === true)
             LockThreadClient();
 
-        prismws.send(JSON.stringify(eventObject));
-    }
-
+        sendWhenConnected(eventObject);
+    }  
 
     this.GetFromEvent = async function (UUID, Token, FormUUID, ID, EventID, Parameters, LockClient) {
 
@@ -134,7 +151,7 @@ function PrismServerFunctions() {
         if (LockClient === true)
             LockThreadClient();
 
-        prismws.send(JSON.stringify(eventObject));
+        sendWhenConnected(eventObject);
     }
 
     this.Heartbeat = function (UUID, Token, FormUUID) {
@@ -156,6 +173,6 @@ function PrismServerFunctions() {
             ],
         }
 
-        prismws.send(JSON.stringify(eventObject));
+        sendWhenConnected(eventObject);
     }
 }

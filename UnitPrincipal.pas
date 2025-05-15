@@ -3,9 +3,22 @@ unit UnitPrincipal;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  Vcl.Menus, D2Bridge.Forms, Vcl.ExtCtrls, Vcl.Imaging.jpeg; //Declare D2Bridge.Forms always in the last unit
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.Menus,
+  Vcl.ExtCtrls,
+  Vcl.Imaging.jpeg,
+  Vcl.Imaging.pngimage,
+  uFrmPix, //pq da erro aqui no editor?
+  D2Bridge.Forms; //Declare D2Bridge.Forms always in the last unit
 
 type
   TFrmPrincipal = class(TD2BridgeForm)
@@ -18,7 +31,7 @@ type
     Desconectar1: TMenuItem;
     Condomnios1: TMenuItem;
     Inquilinos1: TMenuItem;
-    elefones1: TMenuItem;
+    Condonimos: TMenuItem;
     Condomnio1: TMenuItem;
     Funcionrios1: TMenuItem;
     Blocos1: TMenuItem;
@@ -45,8 +58,11 @@ type
     Agncias1: TMenuItem;
     Contas2: TMenuItem;
     Image1: TImage;
+    BancodeDados1: TMenuItem;
     procedure Module11Click(Sender: TObject);
     procedure Condomnio1Click(Sender: TObject);
+//    procedure CondonimosClick(Sender: TObject);
+    //procedure FormCreate(Sender: TObject);
   private
 
   public
@@ -62,7 +78,7 @@ Function FrmPrincipal: TFrmPrincipal;
 implementation
 
 Uses
-   CRMWebApp, UnitCondominio;
+   CRMWebApp, UnitCondominio, UnitCondonimos;
 
 Function FrmPrincipal: TFrmPrincipal;
 begin
@@ -81,6 +97,14 @@ begin
   FrmCondominio.ShowModal;
 end;
 
+//procedure TFrmPrincipal.CondonimosClick(Sender: TObject);
+//begin
+//  if FrmCondonimos = nil then
+//     TFrmCondonimos.CreateInstance;
+//
+//  TFrmCondonimos.ShowModal;
+//end;
+
 procedure TFrmPrincipal.ExportD2Bridge;
 begin
  inherited;
@@ -92,16 +116,35 @@ begin
  D2Bridge.FrameworkExportType.TemplateMasterHTMLFile:= '';
  D2Bridge.FrameworkExportType.TemplatePageHTMLFile := '';
 
+
  //Export yours Controls
  with D2Bridge.Items.add do
  begin
-  SideMenu(MainMenu1);
-//  VCLObj(Label1);
-//  VCLObj(Label2);
-//  VCLObj(Label3);
-    VCLObj(image1);
+    //SideMenu(MainMenu1);
+    SideMenu(MainMenu1).HTMLStyle := 'background-color: #4682B4;';
+    //VCLObj(image1);
+    //Row.Items.Add.VCLObj(Image1).HTMLStyle := 'width: 150px; height: auto; align-self: flex-start; margin: 10px;';
+    //Row.Items.Add.VCLObj(Image1).HTMLStyle := 'width: 150px; height: auto; margin: 10px auto;';
+    //Row.Items.Add.VCLObj(Image1).HTMLStyle := 'width: 100%; height: 100%; object-fit: cover; margin: 0;';
+    //Row.Items.Add.VCLObj(Image1).HTMLStyle := 'width: 100%; height: auto; margin: 10px 0;';
+    Row.Items.Add.VCLObj(Image1).HTMLStyle :=
+      'width: 100%; height: auto; max-height: 600px; object-fit: contain; margin: 10px auto;';
+
  end;
+
 end;
+
+//procedure TFrmPrincipal.FormCreate(Sender: TObject);
+//var
+//  D2BridgeLayout: TD2BridgeLayout;
+//begin
+//  D2BridgeLayout := TD2BridgeLayout.Create(Self);
+//  try
+//    D2BridgeLayout.TemplateLogo := '<img src="img/logo.png" style="max-height:40px;">';
+//  finally
+//    D2BridgeLayout.Free;
+//  end;
+//end;
 
 procedure TFrmPrincipal.InitControlsD2Bridge(const PrismControl: TPrismControl);
 begin

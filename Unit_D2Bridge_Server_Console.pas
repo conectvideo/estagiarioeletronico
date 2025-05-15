@@ -223,7 +223,7 @@ begin
  vServerPort:= D2BridgeServerController.Prism.INIConfig.ServerPort(8888);
  vServerName:= D2BridgeServerController.Prism.INIConfig.ServerName('D2Bridge Server');
 
- D2BridgeServerController.APPName:= 'CRM';
+ D2BridgeServerController.APPName:= 'FZ Admin';
  //D2BridgeServerController.APPDescription:= 'My D2Bridge Web APP';
 
  //Security

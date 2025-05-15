@@ -18,7 +18,10 @@ uses
   UnitPrincipal in 'UnitPrincipal.pas' {FrmPrincipal},
   CRM_DataModule in 'CRM_DataModule.pas' {Dm: TDataModule},
   UnitCondominio in 'UnitCondominio.pas' {FrmCondominio},
-  UnitCondominioCad in 'UnitCondominioCad.pas' {FrmCondominioCad};
+  UnitCondonimosCad in 'UnitCondonimosCad.pas' {FrmCondonimosCad},
+  UnitCondominioCad in 'UnitCondominioCad.pas' {FrmCondominioCad},
+  UnitCondonimos in 'UnitCondonimos.pas' {FrmCondonimos},
+  uFrmPix in 'FSPix-VCL\uFrmPix.pas' {frmPixVCL};
 
 {$R *.res}
 

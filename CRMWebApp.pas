@@ -25,6 +25,7 @@ type
    procedure OnIdleSession(Session: TPrismSession; var Renew: boolean);
    procedure OnException(Form: TObject; Sender: TObject; E: Exception; FormName: String; ComponentName: String; EventName: string; APrismSession: IPrismSession);
    procedure OnSecurity(const SecEventInfo: TSecuritEventInfo);
+
   public
    constructor Create(AOwner: TComponent); override;
 

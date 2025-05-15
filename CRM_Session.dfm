@@ -1,5 +1,4 @@
 inherited CRMSession: TCRMSession
-  Height = 606
-  Width = 697
-  PixelsPerInch = 120
+  Height = 485
+  Width = 558
 end

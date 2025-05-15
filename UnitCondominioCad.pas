@@ -5,8 +5,17 @@ unit UnitCondominioCad;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, 
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.Mask,
   D2Bridge.Forms;
 
 type
@@ -23,6 +32,12 @@ type
     Btn_Cancelar: TButton;
     Lbl_Cep: TLabel;
     Edt_Cep: TEdit;
+    Lbl_Bairro: TLabel;
+    Edt_Bairro: TEdit;
+    Lbl_Numero: TLabel;
+    Edt_Numero: TEdit;
+    Lbl_Complemento: TLabel;
+    Edt_Complemento: TEdit;
     procedure Btn_CancelarClick(Sender: TObject);
     procedure Btn_SalvarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -58,11 +73,15 @@ end;
 
 procedure TFrmCondominioCad.Btn_SalvarClick(Sender: TObject);
 begin
-  dm.qryCondominios.FieldByName('nome').Value     := Edt_nome.Text;
-  dm.qryCondominios.FieldByName('endereco').Value := Edt_Endereco.Text;
-  dm.qryCondominios.FieldByName('cidade').Value   := Edt_Cidade.Text;
-  dm.qryCondominios.FieldByName('estado').Value   := Edt_estado.Text;
-  dm.qryCondominios.FieldByName('cep').Value      := Edt_cep.Text;
+
+  dm.qryCondominios.FieldByName('nome').Value        := Edt_nome.Text;
+  dm.qryCondominios.FieldByName('endereco').Value    := Edt_Endereco.Text;
+  dm.qryCondominios.FieldByName('numero').Value      := Edt_Numero.Text;
+  dm.qryCondominios.FieldByName('complemento').Value := Edt_Complemento.Text;
+  dm.qryCondominios.FieldByName('bairro').Value      := Edt_Bairro.Text;
+  dm.qryCondominios.FieldByName('cidade').Value      := Edt_Cidade.Text;
+  dm.qryCondominios.FieldByName('estado').Value      := Edt_estado.Text;
+  dm.qryCondominios.FieldByName('cep').Value         := Edt_cep.Text;
   dm.qryCondominios.Post;
 
   Close;
@@ -76,7 +95,7 @@ begin
 
   //TemplateClassForm:= TD2BridgeFormTemplate;
   D2Bridge.FrameworkExportType.TemplateMasterHTMLFile:= '';
-  D2Bridge.FrameworkExportType.TemplatePageHTMLFile := '';
+  D2Bridge.FrameworkExportType.TemplatePageHTMLFile  := '';
 
   with D2Bridge.Items.add do
   begin
@@ -84,9 +103,13 @@ begin
     begin
       FormGroup(Lbl_Nome.Caption).AddVCLObj(Edt_Nome);
       FormGroup(Lbl_Endereco.Caption).AddVCLObj(Edt_Endereco);
+      FormGroup(Lbl_Numero.Caption).AddVCLObj(Edt_Numero);
+      FormGroup(Lbl_Complemento.Caption).AddVCLObj(Edt_Complemento);
+      FormGroup(Lbl_Bairro.Caption).AddVCLObj(Edt_Bairro);
       FormGroup(Lbl_Cidade.Caption).AddVCLObj(Edt_Cidade);
       FormGroup(Lbl_Estado.Caption).AddVCLObj(Edt_Estado);
       FormGroup(Lbl_Cep.Caption).AddVCLObj(Edt_Cep);
+      //FormGroup('Telefone', MaskEdit1.Text).AddVCLObj(MaskEdit1); //como usar um maskedit para que saia dentro dele e nao acima dele o text
     end;
 
     with row.Items.Add do
@@ -103,19 +126,25 @@ procedure TFrmCondominioCad.FormShow(Sender: TObject);
 begin
   if IdCondominio > 0 then
   begin
-    Edt_Nome.Text     := Dm.qryCondominios.FieldByName('nome').AsString;
-    Edt_Endereco.Text := Dm.qryCondominios.FieldByName('endereco').AsString;
-    Edt_Cidade.Text   := Dm.qryCondominios.FieldByName('cidade').AsString;
-    Edt_Estado.Text   := Dm.qryCondominios.FieldByName('estado').AsString;
-    Edt_Cep.Text      := Dm.qryCondominios.FieldByName('cep').AsString;
+    Edt_Nome.Text        := Dm.qryCondominios.FieldByName('nome').AsString;
+    Edt_Endereco.Text    := Dm.qryCondominios.FieldByName('endereco').AsString;
+    Edt_Numero.Text      := Dm.qryCondominios.FieldByName('numero').AsString;
+    Edt_Complemento.Text := Dm.qryCondominios.FieldByName('complemento').AsString;
+    Edt_Bairro.Text      := Dm.qryCondominios.FieldByName('bairro').AsString;
+    Edt_Cidade.Text      := Dm.qryCondominios.FieldByName('cidade').AsString;
+    Edt_Estado.Text      := Dm.qryCondominios.FieldByName('estado').AsString;
+    Edt_Cep.Text         := Dm.qryCondominios.FieldByName('cep').AsString;
   end
   else
   begin
-    Edt_Nome.Text     := '';
-    Edt_Endereco.Text := '';
-    Edt_Cidade.Text   := '';
-    Edt_Estado.Text   := '';
-    Edt_Cep.Text      := '';
+    Edt_Nome.Text        := '';
+    Edt_Endereco.Text    := '';
+    Edt_Numero.Text      := '';
+    Edt_Complemento.Text := '';
+    Edt_Bairro.Text      := '';
+    Edt_Cidade.Text      := '';
+    Edt_Estado.Text      := '';
+    Edt_Cep.Text         := '';
   end;
 end;
 

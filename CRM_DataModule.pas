@@ -5,12 +5,30 @@ unit CRM_DataModule;
 interface
 
 uses
-  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
-  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
-  FireDAC.Phys.FB, FireDAC.Phys.FBDef, FireDAC.Phys.IBBase, FireDAC.Stan.Param,
-  FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet,
+  System.SysUtils,
+  System.Classes,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef,
+  FireDAC.VCLUI.Wait,
+  Data.DB,
+  FireDAC.Comp.Client,
+  FireDAC.Phys.FB,
+  FireDAC.Phys.FBDef,
+  FireDAC.Phys.IBBase,
+  FireDAC.Stan.Param,
+  FireDAC.DatS,
+  FireDAC.DApt.Intf,
+  FireDAC.DApt,
+  FireDAC.Comp.DataSet,
   Vcl.Dialogs;
 
 type
@@ -19,11 +37,15 @@ type
     FDPhysFBDriverLink1: TFDPhysFBDriverLink;
     qryCondominios: TFDQuery;
     DataSource1: TDataSource;
+    qryCondonimos: TFDQuery;
+    DSMoradores: TDataSource;
 
   private
 
+
     { Private declarations }
   public
+    procedure ListarCondonimos(Busca: string);
     procedure ListarCondominios(Busca: string);
     class procedure CreateInstance;
   end;
@@ -65,5 +87,23 @@ begin
 
   qryCondominios.Active:= true;
 end;
+
+Procedure TDm.ListarCondonimos(Busca: string);
+begin
+  qryCondonimos.Active := False;
+  qryCondonimos.SQL.clear;
+  qryCondonimos.SQL.Add('select * from moradores');
+
+  if busca <> '' then
+  begin
+    qryCondonimos.SQL.Add('where nome like :nome');
+    qryCondonimos.ParamByName('nome').Value := '%' + busca + '%';
+  end;
+
+  qryCondonimos.SQL.Add('order by Id Asc');
+
+  qryCondonimos.Active:= true;
+end;
+
 
 end.

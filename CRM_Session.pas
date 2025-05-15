@@ -20,7 +20,8 @@ implementation
 
 Uses
   D2Bridge.Instance,
-  CRMWebApp, CRM_DataModule;
+  CRMWebApp, CRM_DataModule,
+  uFrmPix;
 
 {$R *.dfm}
 
@@ -30,6 +31,8 @@ begin
 
  if DM = nil then
    TDm.CreateInstance;
+ if frmPixVCL = nil then
+   TfrmPixVCL.CreateInstance;
 
 end;
 

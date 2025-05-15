@@ -5,9 +5,25 @@ unit UnitCondominio;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, 
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, UnitPrincipal,
-  Vcl.ExtCtrls, Data.DB, Vcl.Grids, Vcl.DBGrids, CRM_DataModule,UnitCondominioCad,
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  UnitPrincipal,
+  Vcl.ExtCtrls,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  CRM_DataModule,
+  UnitCondominioCad,
+  UnitCondonimosCad,
+  uFrmPix, //pq da erro no editor?
   D2Bridge.Forms;
 
 type
@@ -20,13 +36,18 @@ type
     Btn_Novo: TButton;
     Btn_Editar: TButton;
     Btn_Excluir: TButton;
+    BtnPagamento: TButton;
     procedure FormShow(Sender: TObject);
     procedure Btn_PesquisarClick(Sender: TObject);
     procedure Btn_NovoClick(Sender: TObject);
     procedure Btn_EditarClick(Sender: TObject);
     procedure Btn_ExcluirClick(Sender: TObject);
+    procedure BtnPagamentoClick(Sender: TObject);
   private
     vFrmCondminioCad : TFrmCondominioCad;
+    vFrmPRincipal :TFrmPrincipal;
+    vFrmCondonimosCad : TFrmCondonimosCad;
+    vFrmPix : TfrmPixVCL;
     procedure ListarCondominios;
     { Private declarations }
   public
@@ -38,6 +59,7 @@ type
   end;
 
 function FrmCondominio:TFrmCondominio;
+//function FrmCondonimos:TFrmCondonimos;
 
 implementation
 
@@ -49,6 +71,25 @@ Uses
 function FrmCondominio:TFrmCondominio;
 begin
   result:= TFrmCondominio(TFrmCondominio.GetInstance);
+end;
+
+//function FrmCondonimo:TFrmCondonimos;
+//begin
+//  result:= TFrmCondonimos(TFrmCondonimos.GetInstance);
+//end;
+
+procedure TFrmCondominio.BtnPagamentoClick(Sender: TObject);
+begin
+  inherited;
+  if IsD2BridgeContext then
+     ShowPopupModal('PopupPix')    //nao abre o form
+  else
+  begin
+    vFrmPix := TfrmPixVCL.Create(Self);
+    vFrmPix.ShowModal;
+  end;
+
+  ListarCondominios;
 end;
 
 procedure TFrmCondominio.Btn_EditarClick(Sender: TObject);
@@ -103,6 +144,7 @@ end;
 
 procedure TFrmCondominio.ExportD2Bridge;
 begin
+  Image1.Visible:= False;
   inherited;
 
   Title:= 'Cadastro de Condomínios';
@@ -115,6 +157,9 @@ begin
   vFrmCondminioCad := TFrmCondominioCad.Create(Self);
   d2bridge.AddNested(vFrmCondminioCad);
 
+  //Configuração do form popup -como funciona quando temos mais de um form popup?
+  vFrmPix := TfrmPixVCL.Create(Self);
+  d2bridge.AddNested(vFrmPix);
 
   with D2Bridge.Items.add do
   begin
@@ -125,6 +170,7 @@ begin
       FormGroup('').AddVCLObj(Btn_Novo, CSSClass.Button.add);
       FormGroup('').AddVCLObj(Btn_Editar, CSSClass.Button.edit);
       FormGroup('').AddVCLObj(Btn_Excluir, CSSClass.Button.delete);
+      FormGroup('').AddVCLObj(BtnPagamento, CSSClass.Button.send);
     end;
 
     With Row.Items.Add do
@@ -132,6 +178,9 @@ begin
 
     With Popup('PopupCondominioCad', 'Cadastro de Condominios').Items.Add do
     Nested(vFrmCondminioCad);
+
+    With Popup('PopupPix', 'Pagamento Pix').Items.Add do
+    Nested(vFrmPix);
   end;
 
 end;
@@ -144,6 +193,7 @@ end;
 procedure TFrmCondominio.FormShow(Sender: TObject);
 begin
   inherited;
+
   ListarCondominios;
 end;
 

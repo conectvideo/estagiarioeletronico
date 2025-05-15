@@ -3,7 +3,7 @@ object FrmCondominio: TFrmCondominio
   Top = 0
   Caption = 'FrmCondominio'
   ClientHeight = 478
-  ClientWidth = 740
+  ClientWidth = 994
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,7 +15,7 @@ object FrmCondominio: TFrmCondominio
   object DBGrid1: TDBGrid
     Left = 0
     Top = 49
-    Width = 740
+    Width = 994
     Height = 429
     Align = alClient
     DataSource = Dm.DataSource1
@@ -46,6 +46,12 @@ object FrmCondominio: TFrmCondominio
       end
       item
         Expanded = False
+        FieldName = 'BAIRRO'
+        Width = 250
+        Visible = True
+      end
+      item
+        Expanded = False
         FieldName = 'CIDADE'
         Width = 250
         Visible = True
@@ -54,7 +60,7 @@ object FrmCondominio: TFrmCondominio
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 740
+    Width = 994
     Height = 49
     Align = alTop
     TabOrder = 1
@@ -107,6 +113,15 @@ object FrmCondominio: TFrmCondominio
       Caption = 'Excluir'
       TabOrder = 4
       OnClick = Btn_ExcluirClick
+    end
+    object BtnPagamento: TButton
+      Left = 872
+      Top = 12
+      Width = 75
+      Height = 25
+      Caption = 'Pagamento'
+      TabOrder = 5
+      OnClick = BtnPagamentoClick
     end
   end
 end

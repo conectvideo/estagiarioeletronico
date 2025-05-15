@@ -8,18 +8,18 @@ object Dm: TDm
       'User_Name=SYSDBA'
       'Password=Masterkey'
       'Protocol=TCPIP'
-      'Server=192.168.15.99'
+      'Server=localhost'
       'Port=3050'
       'DriverID=FB')
     Connected = True
     LoginPrompt = False
-    Left = 32
-    Top = 32
+    Left = 33
+    Top = 33
   end
   object FDPhysFBDriverLink1: TFDPhysFBDriverLink
     VendorLib = 'C:\Program Files (x86)\Firebird\Firebird_5_0\fbclient.dll'
     Left = 184
-    Top = 32
+    Top = 33
   end
   object qryCondominios: TFDQuery
     Connection = FDConnection2
@@ -32,5 +32,17 @@ object Dm: TDm
     DataSet = qryCondominios
     Left = 168
     Top = 128
+  end
+  object qryCondonimos: TFDQuery
+    Connection = FDConnection2
+    SQL.Strings = (
+      'select * from moradores')
+    Left = 32
+    Top = 256
+  end
+  object DSMoradores: TDataSource
+    DataSet = qryCondonimos
+    Left = 184
+    Top = 256
   end
 end
